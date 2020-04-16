@@ -30,10 +30,9 @@ app.use('', Router);
 //Asignos los motores de vista
 app.set('view engine', 'pub');
 
-//Escucha los eventos de cuando se conecta alguien
-io.on('connection', (socket) => {
-    console.log('Nuevo usuario conectado')
-});
+//exporto la funcion que esta en mi archivo sockets y le paso por parametro (io)
+require('./app/sockets')(io);
+
 
 server.listen(3000, () => { //Escucha en el puerto 3000 y manda un call-Back por consola
     console.log('Server corriendo con exito y escuchando en el puerto 3000');
