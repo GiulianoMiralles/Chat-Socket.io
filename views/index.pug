@@ -15,8 +15,7 @@ html(lang="es")
         #welcome(class="full-height full-width")
             form#registro-form(action="http://localhost:3000/chat", method="POST")
                 h1(class="center") Bienvenido
-                p(class="center lighter") Ingresa tu nombre de usuario
-                input#username(type="text", name="username",placeholder="Tu usuario aquí...", class="full-width", required=true)
+                input#username(type="text", name="username",placeholder="Ingrese su nombre de ususario", class="full-width", required=true)
                 div 
                     input#male(type="radio", name="sex", value="Male", checked=true)
                     label(class="lighter", for="male") Hombre
@@ -26,6 +25,6 @@ html(lang="es")
                 if !validated 
                     div#registro-warning(class="titilando")
                         i#warning-icon(class="fa fa-warning")
-                        small(class="lighter") El Usuario ingresado ya existe =(
+                        small(class="lighter") El Usuario ingresado ya existe!
 
                 button#send-form(class="lighter") INGRESAR

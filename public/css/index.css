@@ -2,14 +2,13 @@
 
 #welcome {
     align-items: center;
-    background-image: url('/images/fonden.png!d');
-    background-size: cover;
     justify-content: center;
     display: flex;
+    background: #343D5B;
 }
 
 #registro-form {
-    background: rgba(0, 0, 0, .25);
+    background: rgba(255, 255, 255, 0.25);
     padding: 30px;
     width: 350px;
     border-radius: 20px;
@@ -17,7 +16,7 @@
 
 #username {
     background: transparent;
-    border: 1px solid #000;
+    border: 1px solid rgb(255, 255, 255);
     border-radius: 20px;
     font-size: 14px;
     margin: 20px 0px;
@@ -25,7 +24,7 @@
 }
 
 #username::placeholder {
-    color: #000;
+    color: rgb(255, 255, 255);
 }
 
 #send-form {
@@ -67,4 +66,9 @@
 #warning-icon {
     color: yellow;
     margin-right: 10px;
+}
+
+h1,
+p {
+    color: floralwhite;
 }

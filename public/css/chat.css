@@ -1,5 +1,5 @@
 #container {
-    background: #f2f2f2;
+    background: #343D5B;
     padding: 25px 50px;
 }
 
@@ -9,11 +9,14 @@
 #chat-area {
     display: flex;
     height: 80%;
+    border-color: seashell;
+    background: #343D5B;
 }
 
 #messages {
-    background: #fff;
-    border: 1px solid #999;
+    background: #343D5B;
+    color: floralwhite;
+    border: 1px solid rgb(255, 255, 255);
     border-radius: 20px 0px 0px 0px;
     display: flex;
     flex: 3;
@@ -21,13 +24,14 @@
 }
 
 #users-list {
-    background: #fff;
-    border: 1px solid #999;
+    background: #343D5B;
+    border: 1px solid rgb(255, 255, 255);
     border-radius: 0px 20px 0px 0px;
     display: flex;
     flex: 1;
     margin-left: 20px;
     padding: 20px;
+    color: floralwhite;
 }
 
 
@@ -47,6 +51,9 @@
     font-size: 14px;
     padding: 20px;
     resize: none;
+    background: #343D5B;
+    color: floralwhite;
+    border: 1px solid rgb(255, 255, 255);
 }
 
 #send-msg-btn {
