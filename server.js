@@ -28,7 +28,7 @@ app.use('', Router);
 
 
 //Asignos los motores de vista
-app.set('view engine', 'pub');
+app.set('view engine', 'pug');
 
 //exporto la funcion que esta en mi archivo sockets y le paso por parametro (io)
 require('./app/sockets')(io);

@@ -1,15 +1,23 @@
+const users = require('./users');
+
 function index(request, response) {
-    response.render('index.pug');
-};
+    response.render('index.pug', { validated: true });
+}
 
-function chat(request, response) {
-    response.render('chat')
+function redirect(request, response) {
+    if (request.validate) return response.render('chat.pug');
+    return response.render('index.pug', { validated: false });
+}
 
-};
-
+function validate(request, response, next) {
+    request.validate = false;
+    if (users.indexOf(request.body.username) == -1) request.validate = true;
+    next();
+}
 
 //Exporto las funciones
 module.exports = {
     index,
-    chat
-};
+    validate,
+    redirect
+}

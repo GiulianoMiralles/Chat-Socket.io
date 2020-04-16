@@ -8,7 +8,7 @@ const Router = express.Router();
 
 // Creo las rutas y las trabajo en el archivo controller.js
 Router.get('/', controller.index)
-    .post('/chat', controller.chat);
+    .post('/chat', controller.validate, controller.redirect);
 
 
 //Exporto el modulo de Router

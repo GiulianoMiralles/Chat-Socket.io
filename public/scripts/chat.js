@@ -3,15 +3,14 @@ $(document).ready(function() {
     username(socket);
     updateUsers(socket);
     newMessage(socket);
-    updateMessage(socket);
-
+    updateMessages(socket);
 });
+
 //creo la funcion username en mi cliente y le paso el socket como parametro 
 function username(socket) {
     socket.emit('username', { // creo el evento username y en socket.js lo escucho
         username: localStorage.username //esto lo recibo de registro.js
-    });
-
+    })
 }
 
 
@@ -29,24 +28,22 @@ function updateUsers(socket) { //Aqui escucho el evento que me manda el servidor
     });
 }
 
-function newMessge(socket) { //Envio de mensajes
+function newMessage(socket) { //Envio de mensajes
     $('#message').keydown(function(ev) { //el mensaje se envia al tocar la tecla enter
-        if (ev.keycode == 13) { // la tecla enter en la numero 13
+        if (ev.keyCode == 13) { // la tecla enter en la numero 13
             ev.preventDefault(); // evito enviar el mensaje en blanco
             $('#send-msg-form').submit();
-            document.querySelector('#send-msg-form').reset(); //El input se vacia cuando mando un mensaje
         }
-    })
+    });
     $('#send-msg-form').submit(function(ev) { //aqui evito que mande mensajes en blanco
         ev.preventDefault();
-        socket.emit('newMessage'), { //Aqui tomo el valor del input junto con el nombre y el genero que estan en la localStorage
+        socket.emit('newMessage', { //Aqui tomo el valor del input junto con el nombre y el genero que estan en la localStorage
             username: localStorage.username,
             genero: localStorage.genero,
             message: $('#message').val()
-        }
-
-    })
-
+        });
+        document.querySelector('#send-msg-form').reset(); //El input se vacia cuando mando un mensaje
+    });
 }
 
 
