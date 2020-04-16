@@ -3,7 +3,6 @@ module.exports = (io) => {
     io.on('connection', (socket) => {
         console.log('Nuevo usuario conectado')
         addUser(socket);
-        updateUsers(socket);
     });
 }
 
@@ -14,6 +13,7 @@ function addUser(socket) {
     socket.on('username', (data) => { // escucha el evento username || on es como el listen para escuchar eventos
         socket.username = data.username; // del evento obtengo el un JSon (data) y de ese obtengo el nombre del usuario o lo meto en una lista
         users.push(data.username);
+        updateUsers(socket);
     })
 
 
