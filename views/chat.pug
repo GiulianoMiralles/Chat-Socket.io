@@ -4,7 +4,7 @@ html(lang="es")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
-        title MyChat App
+        title Sala de chat
         link(rel="stylesheet", href="/css/main.css")
         link(rel="stylesheet", href="/css/chat.css")
         link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
@@ -21,6 +21,6 @@ html(lang="es")
                         h2 Usuarios en línea
                         #users
             form#send-msg-form.full-width
-                textarea#message.lighter(name="message",placeholder="Escribe aquí tu mensaje...")
+                input#message.lighter(name="message",placeholder="Escribe aquí tu mensaje...", required=true)
                 button#send-msg-btn
                     i.fa.fa-paper-plane

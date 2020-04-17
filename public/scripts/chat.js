@@ -36,10 +36,15 @@ function newMessage(socket) { //Envio de mensajes
         }
     });
     $('#send-msg-form').submit(function(ev) { //aqui evito que mande mensajes en blanco
+        let fecha = new Date();
+        let hora = fecha.getHours();
+        let minutos = fecha.getMinutes();
+        let horaMessage = hora + ':' + minutos;
         ev.preventDefault();
         socket.emit('newMessage', { //Aqui tomo el valor del input junto con el nombre y el genero que estan en la localStorage
             username: localStorage.username,
             genero: localStorage.genero,
+            hora: horaMessage,
             message: $('#message').val()
         });
         document.querySelector('#send-msg-form').reset(); //El input se vacia cuando mando un mensaje
@@ -54,13 +59,13 @@ function updateMessages(socket) {
             html += '<div class="my-msg full-width flex">';
             if (data.genero == 'Male') html += '<div class="my-style-m message"><h4> Tú </h4>';
             else html += '<div class="my-style-f message"><h4> Tú </h4>';
-            html += '<p class="lighter">' + data.message + '</p>';
+            html += '<p class="lighter">' + data.message + "     " + '<sub>' + data.hora + '</sub>' + '</p>';
             html += '</div></div>';
         } else { //Por el contrario los mensajes que mande el resto se van a ver del lado izquierdo
             html += '<div class="full-width flex">';
             if (data.genero == 'Male') html += '<div class="blue message"><h4>' + data.username + '</h4>';
             else html += '<div class="pink message"><h4>' + data.username + '</h4>';
-            html += '<p class="lighter">' + data.message + '</p>';
+            html += '<p class="lighter">' + data.message + "     " + '<sub>' + data.hora + '</sub>' + '</p>';
             html += '</div></div>';
         }
         $('#msg-list').append(html);
