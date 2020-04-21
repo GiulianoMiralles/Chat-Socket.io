@@ -49,6 +49,6 @@ function newMessage(socket) { //tomo el evento envio de mensajes de chat.js (new
     });
     socket.on('Typing', (data) => {
         socket.broadcast.emit('Typing', { data });
-        console.log(data);
+        console.log('El usuario ' + data.username + ' esta escribiendo..');
     });
 }
