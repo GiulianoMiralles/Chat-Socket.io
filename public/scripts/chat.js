@@ -4,6 +4,7 @@ $(document).ready(function() {
     updateUsers(socket);
     newMessage(socket);
     updateMessages(socket);
+    disconnectUser(socket);
 });
 
 //creo la funcion username en mi cliente y le paso el socket como parametro 
