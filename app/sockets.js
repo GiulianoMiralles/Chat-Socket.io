@@ -29,7 +29,9 @@ function updateUsers(socket) { //actualiza y muetra mi lista de usuarios conecta
 function disconnectUser(socket) {
     socket.on('disconnect', function() {
         if (socket.username) {
-            console.log('El usuario', socket.username, ' se desconecto SERVIDOR');
+            socket.broadcast.emit('userOff', {
+                user: socket.username
+            }); // Esto envia un mensaje a todos los usuarios menos al que se desconecta
             users.splice(users.indexOf(socket.username), 1); //Busco el ususario que se desconecto y lo saco de la lista
         }
         updateUsers(socket); // una vez que saque al usuario de la lista la actualizo

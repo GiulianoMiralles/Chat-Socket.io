@@ -72,3 +72,21 @@ function updateMessages(socket) {
         $('#msg-list').append(html);
     });
 }
+
+
+
+
+function disconnectUser(socket) {
+    socket.on('userOff', (data) => {
+        $('#userOff').html('');
+        if (data.user) {
+            let fecha = new Date();
+            let hora = fecha.getHours();
+            let minutos = fecha.getMinutes();
+            let horaMessage = hora + ':' + minutos;
+            html = '';
+            html += '<div class="userOff"><h4>' + 'El usuario ' + data.user + ' ha salido del chat ' + horaMessage + '</h4>';
+            $('#msg-list').append(html);
+        }
+    });
+}
