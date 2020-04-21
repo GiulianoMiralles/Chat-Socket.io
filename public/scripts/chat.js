@@ -12,6 +12,18 @@ function username(socket) {
     socket.emit('username', { // creo el evento username y en socket.js lo escucho
         username: localStorage.username //esto lo recibo de registro.js
     })
+    socket.on('userOn', (data) => {
+        $('#userOff').html('');
+        if (data.user) {
+            let fecha = new Date();
+            let hora = fecha.getHours();
+            let minutos = fecha.getMinutes();
+            let horaMessage = hora + ':' + minutos;
+            html = '';
+            html += '<div class="userOn"><h4>' + 'El usuario ' + data.user + ' ha ingresado al chat ' + horaMessage + '</h4>';
+            $('#msg-list').append(html);
+        }
+    });
 }
 
 
@@ -72,8 +84,6 @@ function updateMessages(socket) {
         $('#msg-list').append(html);
     });
 }
-
-
 
 
 function disconnectUser(socket) {
