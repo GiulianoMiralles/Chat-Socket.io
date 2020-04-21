@@ -47,4 +47,8 @@ function newMessage(socket) { //tomo el evento envio de mensajes de chat.js (new
         socket.emit('updateMessages', data); //actualizo los mensajes en mi cliente
         socket.broadcast.emit('updateMessages', data); //actualizo el mensaje que yo mande en los clientes del resto
     });
+    socket.on('Typing', (data) => {
+        socket.broadcast.emit('Typing', { data });
+        console.log(data);
+    });
 }

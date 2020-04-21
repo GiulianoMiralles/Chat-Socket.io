@@ -12,7 +12,7 @@ function username(socket) {
     socket.emit('username', { // creo el evento username y en socket.js lo escucho
         username: localStorage.username //esto lo recibo de registro.js
     })
-    socket.on('userOn', (data) => {
+    socket.on('userOn', (data) => { //Esta funcion toma el valor del usuario conectado y lo printea en el chat
         $('#userOff').html('');
         if (data.user) {
             let fecha = new Date();
@@ -48,6 +48,15 @@ function newMessage(socket) { //Envio de mensajes
             $('#send-msg-form').submit();
         }
     });
+
+    $('#message').keypress(function(ev) { //MUESTRA EL TYPING POR CONSOLA NOMAS
+
+        socket.emit('Typing', {
+            username: localStorage.username
+        })
+    });
+
+
     $('#send-msg-form').submit(function(ev) { //aqui evito que mande mensajes en blanco
         let fecha = new Date();
         let hora = fecha.getHours();
@@ -86,7 +95,8 @@ function updateMessages(socket) {
 }
 
 
-function disconnectUser(socket) {
+
+function disconnectUser(socket) { //Esta funcion toma el valor del usuario desconectado y lo printea en el chat
     socket.on('userOff', (data) => {
         $('#userOff').html('');
         if (data.user) {
